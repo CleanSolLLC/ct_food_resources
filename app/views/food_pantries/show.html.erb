@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @food_pantry %>
+
+<div>
+  <%= link_to "Edit this food pantry", edit_food_pantry_path(@food_pantry) %> |
+  <%= link_to "Back to food pantries", food_pantries_path %>
+
+  <%= button_to "Destroy this food pantry", @food_pantry, method: :delete %>
+</div>
+
+<%= turbo_frame_tag "comments" do %>
+  <%= render @food_pantry.comments %>
+<% end %>
+
+

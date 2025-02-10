@@ -8,11 +8,14 @@ class FoodPantriesController < ApplicationController
 
   # GET /food_pantries/1 or /food_pantries/1.json
   def show
+    @food_pantry = FoodPantry.includes(:comments, :town).find(params.require(:id))
+    @comments = @food_pantry.comments
   end
 
   # GET /food_pantries/new
   def new
     @food_pantry = FoodPantry.new
+    @food_pantry.comments.build
   end
 
   # GET /food_pantries/1/edit
@@ -61,11 +64,11 @@ class FoodPantriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_food_pantry
-    @food_pantry = FoodPantry.find(params.expect(:id))
+    @food_pantry = FoodPantry.find(params.require(:id))
   end
 
   # Only allow a list of trusted parameters through.
   def food_pantry_params
-    params.expect(food_pantry: [ :name, :address_line1, :address_line2, :city, :state, :zip_code, :phone_number, :contact, :verified, :comments, :town_id ])
+    params.expect(food_pantry: [ :name, :address_line1, :address_line2, :city, :state, :zip_code, :phone_number, :contact, :verified, :additional_info, :town_id, comments_attributes: [:id, :comment, :_destroy]])
   end
 end

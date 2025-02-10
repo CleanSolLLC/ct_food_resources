@@ -1,0 +1,10 @@
+<div id="<%= dom_id comment %>" class="comment mb-4 p-4 border rounded">
+  <div class="comment-meta text-sm text-gray-600">
+    <span class="font-semibold"><%= comment.user.user_name %></span>
+    <span class="ml-2"><%= time_tag comment.created_at, "data-local": "time-ago" %></span>
+  </div>
+  
+  <div class="comment-body mt-2">
+    <%= comment.body %>
+  </div>
+</div> 

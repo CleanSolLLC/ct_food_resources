@@ -6,7 +6,7 @@
       <summary><%= town.name %> (Food Pantries: <%= town.food_pantries.count %>)</summary>
       <ul>
         <% town.food_pantries.each do |pantry| %>
-          <li><%= pantry.name %></li>
+          <li><%= link_to pantry.name, pantry %></li>
         <% end %>
       </ul>
     </details>

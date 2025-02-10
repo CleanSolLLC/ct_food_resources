@@ -1,0 +1,75 @@
+<%= form_with(model: food_pantry) do |form| %>
+  <% if food_pantry.errors.any? %>    
+    <div style="color: red">
+      <h2><%= pluralize(food_pantry.errors.count, "error") %> prohibited this food_pantry from being saved:</h2>
+
+      <ul>
+        <% food_pantry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :address_line1, style: "display: block" %>
+    <%= form.text_field :address_line1 %>
+  </div>
+
+  <div>
+    <%= form.label :address_line2, style: "display: block" %>
+    <%= form.text_field :address_line2 %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :zip_code, style: "display: block" %>
+    <%= form.text_field :zip_code %>
+  </div>
+
+  <div>
+    <%= form.label :phone_number, style: "display: block" %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div>
+    <%= form.label :contact, style: "display: block" %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div>
+    <%= form.label :verified, style: "display: block" %>
+    <%= form.checkbox :verified %>
+  </div>
+
+  <div>
+    <%= form.label :comments, style: "display: block" %>
+    <%= form.fields_for :comments do |comment_form| %>
+      <%= comment_form.label :body %>
+      <%= comment_form.text_area :body %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :town_id, style: "display: block" %>
+    <%= form.text_field :town_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

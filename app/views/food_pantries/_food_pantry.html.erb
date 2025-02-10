@@ -1,0 +1,61 @@
+<div id="<%= dom_id food_pantry %>">
+  <p>
+    <strong>Name:</strong>
+    <%= food_pantry.name %>
+  </p>
+
+  <p>
+    <strong>Address line1:</strong>
+    <%= food_pantry.address_line1 %>
+  </p>
+
+  <p>
+    <strong>Address line2:</strong>
+    <%= food_pantry.address_line2 %>
+  </p>
+
+  <p>
+    <strong>City:</strong>
+    <%= food_pantry.city %>
+  </p>
+
+  <p>
+    <strong>State:</strong>
+    <%= food_pantry.state %>
+  </p>
+
+  <p>
+    <strong>Zip code:</strong>
+    <%= food_pantry.zip_code %>
+  </p>
+
+  <p>
+    <strong>Phone number:</strong>
+    <%= food_pantry.phone_number %>
+  </p>
+
+  <p>
+    <strong>Contact:</strong>
+    <%= food_pantry.contact %>
+  </p>
+
+  <p>
+    <strong>Verified:</strong>
+    <%= food_pantry.verified %>
+  </p>
+
+  <p>
+    <strong>Comments:</strong>
+    <% food_pantry.comments.each do |comment| %>
+      <p> <%= comment.user.user_name %></p>
+      <p><%= comment.created_at %></p>
+      <p><%= comment.body %></p>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Town:</strong>
+    <%= food_pantry.town.name %>
+  </p>
+
+</div>

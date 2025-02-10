@@ -9,7 +9,7 @@ class CountiesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { render :food_pantries }
+      #format.html { render :food_pantries }
     end
   end
 end
