@@ -58,3 +58,5 @@ group :development do
   gem "web-console"
 end
 
+
+gem "pry", "~> 0.15.2"
