@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+
   # get "pages/home", to: "pages#home"
   # get "pages/dashboard", to: "pages#dashboard"
+ 
   get "/signup", to: "registrations#new", as: :new_registration
   post "/signup", to: "registrations#create", as: :registration
   resource :session, except: %i[new]
   get "/login", to: "sessions#new", as: :new_session
   resources :passwords, param: :token
 
-  root "pages#dashboard"
+  resources :counties do
+    get "food_pantries", on: :member
+  end
+
+  resources :food_pantries
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -19,5 +26,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "counties#index"
 end
