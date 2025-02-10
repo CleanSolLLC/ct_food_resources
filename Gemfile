@@ -60,3 +60,5 @@ end
 
 
 gem "pry", "~> 0.15.2"
+
+gem "smarter_csv", "~> 1.13"
