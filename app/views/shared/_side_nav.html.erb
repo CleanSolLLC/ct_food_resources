@@ -1,4 +1,4 @@
-<% unless controller_name == 'sessions' && action_name == 'new' %>
+<% unless controller_name == 'sessions' || controller_name == 'registrations' && action_name == 'new' %>
   <div>
     <nav class="flex flex-1 flex-col">
       <ul role="list" class="flex flex-1 flex-col gap-y-7">

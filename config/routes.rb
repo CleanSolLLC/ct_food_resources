@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get "pages/home"
-  get "pages/dashboard"
-  resource :session
+  # get "pages/home", to: "pages#home"
+  # get "pages/dashboard", to: "pages#dashboard"
+  get "/signup", to: "registrations#new", as: :new_registration
+  post "/signup", to: "registrations#create", as: :registration
+  resource :session, except: %i[new]
+  get "/login", to: "sessions#new", as: :new_session
   resources :passwords, param: :token
 
   root "pages#dashboard"
