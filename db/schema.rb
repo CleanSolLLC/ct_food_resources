@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_10_104701) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_10_110649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_104701) do
     t.bigint "food_pantry_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["food_pantry_id"], name: "index_comments_on_food_pantry_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "counties", force: :cascade do |t|
@@ -43,6 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_104701) do
     t.bigint "town_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "additional_info"
     t.index ["town_id"], name: "index_food_pantries_on_town_id"
   end
 
@@ -73,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_104701) do
   end
 
   add_foreign_key "comments", "food_pantries"
+  add_foreign_key "comments", "users"
   add_foreign_key "food_pantries", "towns"
   add_foreign_key "sessions", "users"
   add_foreign_key "towns", "counties"
