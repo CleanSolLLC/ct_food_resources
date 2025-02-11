@@ -15,6 +15,7 @@ class FoodPantriesController < ApplicationController
   # GET /food_pantries/new
   def new
     @food_pantry = FoodPantry.new
+    @towns = Town.all
     @food_pantry.comments.build
   end
 

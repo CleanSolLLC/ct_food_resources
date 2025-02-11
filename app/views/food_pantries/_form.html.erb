@@ -64,6 +64,9 @@
     <% end %>
   </div>
 
+<%= select_tag name, options_from_collection_for_select(@towns, :id, :name), 
+      prompt: "Choose a Town" %>
+
   <div>
     <%= form.label :town_id, style: "display: block" %>
     <%= form.text_field :town_id %>

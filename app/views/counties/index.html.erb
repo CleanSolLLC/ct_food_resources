@@ -1,10 +1,17 @@
-<h1>Select a County</h1>
-
-<%= form_with url: "#", method: :get, data: { controller: "county-selector" } do %>
-  <%= select_tag :county_id, options_from_collection_for_select(@counties, :id, :name), 
-      prompt: "Choose a County", data: { action: "change->county-selector#fetchPantries" } %>
-<% end %>
-
-<div id="food-pantries">
-  <%= turbo_frame_tag "food_pantries" %>
+<div class="text-3xl px-6 py-4">Counties List</div>
+<div>
+  <ul>
+    <% @counties.each do |county| %>
+      <li class="px-6 py-4">
+        <%= link_to county.name, county%>
+      </li>
+    <% end %>
+  </ul>
 </div>
+
+
+
+
+
+
+

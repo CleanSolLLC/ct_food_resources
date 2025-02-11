@@ -1,6 +1,11 @@
 class CountiesController < ApplicationController
+  before_action :set_county, only: %i[show]
   def index
     @counties = County.all
+  end
+
+  def show
+    @towns = @county.towns
   end
 
   def food_pantries
@@ -11,5 +16,11 @@ class CountiesController < ApplicationController
       format.turbo_stream
       #format.html { render :food_pantries }
     end
+  end
+
+  private
+
+  def set_county
+    @county = County.find(params.require(:id))
   end
 end
