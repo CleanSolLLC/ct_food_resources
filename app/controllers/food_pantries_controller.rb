@@ -70,6 +70,6 @@ class FoodPantriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def food_pantry_params
-    params.expect(food_pantry: [ :name, :address_line1, :address_line2, :city, :state, :zip_code, :phone_number, :contact, :verified, :additional_info, :town_id, comments_attributes: [:id, :comment, :_destroy]])
+    params.expect(food_pantry: [ :name, :address_line1, :address_line2, :city, :state, :zip_code, :phone_number, :contact, :verified, :additional_info, :town_id, comments_attributes: [ :id, :comment, :_destroy ] ])
   end
 end
