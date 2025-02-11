@@ -1,0 +1,17 @@
+<div class="text-3xl px-6 py-4"><%= "Cities & Towns In #{@county.name} county"%></div>
+<div>
+  <ul>
+    <% @towns.each do |town| %>
+      <li class="px-6 py-4">
+        <%= link_to town.name, town %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+
+
+
+
+
