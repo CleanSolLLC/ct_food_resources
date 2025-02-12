@@ -1,0 +1,12 @@
+<turbo-frame id="food_pantries">
+  <h1>Food Pantries in <%= @town.name%></h1>
+    <details>
+      <summary><%= @town.name %> (Food Pantries: <%= @town.food_pantries.count %>)</summary>
+      <ul>
+        <% @food_pantries.each do |pantry| %>
+          <li><%= link_to pantry.name, food_pantry_path pantry %></li>
+        <% end %>
+      </ul>
+    </details>
+  <% end %>
+</turbo-frame>

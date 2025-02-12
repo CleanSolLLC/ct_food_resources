@@ -1,14 +1,15 @@
 <div class="text-3xl px-6 py-4">
-  <%= "Cities & Towns In #{@county.name} county"%>
+  <%= "Cities & Towns In #{@county.name}"%>
 </div>
 <div class="text-xl px-6 py-4">
-  <%= "Total Food Pantry Count For #{@county.name} county: #{@total_by_county}"%>
+  <%= "Total Food Pantry Count For #{@county.name} county: #{total_by_county(@county.towns)}"%>
 </div >
 <div>
   <ul>
-    <% @towns_hash.each_pair do |town, count| %>
+    <% @towns.each do |town| %>
       <li class="px-6 py-4">
-        <%= link_to "#{town} (#{count})", town %>
+        <div><%= link_to "#{town.name} (#{town.food_pantries.count})", town_food_pantries_path(town.id) %></div>
+        <div class="text-blue"><%= link_to "Add New Food Pantry", new_town_food_pantry_path(town.id) %></div>
       </li>
     <% end %>
   </ul>

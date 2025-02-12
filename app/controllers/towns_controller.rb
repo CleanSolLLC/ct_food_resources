@@ -7,6 +7,16 @@ class TownsController < ApplicationController
   def show
   end
 
+  def food_pantries
+    @town = Town.includes(:food_pantries).find(params[:id])
+    @food_pantries = @town.food_pantries
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { render :food_pantries }
+    end
+  end
+
   private
 
   def set_towns

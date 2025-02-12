@@ -12,8 +12,15 @@ Rails.application.routes.draw do
     resources :towns, only: %i[index show]
   end
 
-  resources :counties do
-    get "food_pantries", on: :member
+  get "/towns/:id/food_pantries", to: "towns#food_pantries", as: :town_food_pantries
+
+  # resources :counties do
+  #   get "food_pantries", on: :member
+  # end
+
+
+  resources :towns do
+    resources :food_pantries
   end
 
   resources :food_pantries

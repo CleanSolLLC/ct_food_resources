@@ -6,9 +6,9 @@ class CountiesController < ApplicationController
   end
 
   def show
-    towns = @county.towns
-    @towns_hash = towns_hash(towns)
-    @total_by_county = total_by_county(towns)
+    @towns = @county.towns
+    # @towns_hash = towns_hash(@towns)
+    # @total_by_county = total_by_county(@towns)
   end
 
 

@@ -1,0 +1,9 @@
+<div class="text-1xl px-6 py-4">
+  <%= "Food Pantries in #{@town.name} #{@town.food_pantries.count}" %>
+</div>
+<ul>
+  <% @food_pantries.each do |pantry| %>
+    <li class="px-6 py-4"><%= link_to pantry.name, food_pantry_path(pantry.id) %></li>
+  <% end %>
+</ul>
+
