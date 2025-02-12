@@ -26,10 +26,15 @@
     <%= form.text_field :address_line2 %>
   </div>
 
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
-  </div>
+ <% if form.object.town_id? %>
+   <div>
+     <%= form.label :town_name, "City/Town:", style: "display: block" %>
+     <%= form.text_field :town_name, value: food_pantry.town&.name, readonly: true %>
+     <%= form.hidden_field :town_id %>
+   </div>
+  <% else %>
+    <%= form.collection_select(:town, :town_id, Town.all, :id, :name) %>
+  <% end %>
 
   <div>
     <%= form.label :state, style: "display: block" %>
@@ -62,14 +67,6 @@
       <%= comment_form.label :body %>
       <%= comment_form.text_area :body %>
     <% end %>
-  </div>
-
-<%= select_tag name, options_from_collection_for_select(@towns, :id, :name), 
-      prompt: "Choose a Town" %>
-
-  <div>
-    <%= form.label :town_id, style: "display: block" %>
-    <%= form.text_field :town_id %>
   </div>
 
   <div>

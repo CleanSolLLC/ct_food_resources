@@ -9,7 +9,7 @@
     <% @towns.each do |town| %>
       <li class="px-6 py-4">
         <div><%= link_to "#{town.name} (#{town.food_pantries.count})", town_food_pantries_path(town.id) %></div>
-        <div class="text-blue"><%= link_to "Add New Food Pantry", new_town_food_pantry_path(town.id) %></div>
+        <div class="text-blue"><%= link_to "Add New Food Pantry", new_food_pantry_path(town_id: town.id) %></div>
       </li>
     <% end %>
   </ul>
