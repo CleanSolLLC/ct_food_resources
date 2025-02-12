@@ -1,75 +1,83 @@
-<%= form_with(model: food_pantry) do |form| %>
-  <% if food_pantry.errors.any? %>    
-    <div style="color: red">
-      <h2><%= pluralize(food_pantry.errors.count, "error") %> prohibited this food_pantry from being saved:</h2>
+  <div class="space-y-12">
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base/7 font-semibold text-gray-900">Profile</h2>
+      <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>      
+      
+      
+      <%= form_with(model: food_pantry) do |form| %>
+        <% if food_pantry.errors.any? %>    
+          <div style="color: red">
+            <h2><%= pluralize(food_pantry.errors.count, "error") %> prohibited this food_pantry from being saved:</h2>
 
-      <ul>
-        <% food_pantry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% food_pantry.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+        <div>
+          <%= form.label :name, style: "display: block" %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div>
+          <%= form.label :address_line1, style: "display: block" %>
+          <%= form.text_field :address_line1 %>
+        </div>
+
+        <div>
+          <%= form.label :address_line2, style: "display: block" %>
+          <%= form.text_field :address_line2 %>
+        </div>
+
+       <% if form.object.town_id? %>
+         <div>
+           <%= form.label :town_name, "City/Town:", style: "display: block" %>
+           <%= form.text_field :town_name, value: food_pantry.town&.name, readonly: true %>
+           <%= form.hidden_field :town_id %>
+         </div>
+        <% else %>
+          <%= form.collection_select(:town, :town_id, Town.all, :id, :name) %>
+        <% end %>
+
+        <div>
+          <%= form.label :state, style: "display: block" %>
+          <%= form.text_field :state %>
+        </div>
+
+        <div>
+          <%= form.label :zip_code, style: "display: block" %>
+          <%= form.text_field :zip_code %>
+        </div>
+
+        <div>
+          <%= form.label :phone_number, style: "display: block" %>
+          <%= form.text_field :phone_number %>
+        </div>
+
+        <div>
+          <%= form.label :contact, style: "display: block" %>
+          <%= form.text_field :contact %>
+        </div>
+
+        <div>
+          <%= form.label :verified, style: "display: block" %>
+          <%= form.checkbox :verified %>
+        </div>
+
+        <div>
+          <%= form.label :comments, style: "display: block" %>
+          <%= form.fields_for :comments do |comment_form| %>
+            <%= comment_form.label :body %>
+            <%= comment_form.text_area :body %>
+          <% end %>
+        </div>
+
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
   </div>
-
-  <div>
-    <%= form.label :address_line1, style: "display: block" %>
-    <%= form.text_field :address_line1 %>
-  </div>
-
-  <div>
-    <%= form.label :address_line2, style: "display: block" %>
-    <%= form.text_field :address_line2 %>
-  </div>
-
- <% if form.object.town_id? %>
-   <div>
-     <%= form.label :town_name, "City/Town:", style: "display: block" %>
-     <%= form.text_field :town_name, value: food_pantry.town&.name, readonly: true %>
-     <%= form.hidden_field :town_id %>
-   </div>
-  <% else %>
-    <%= form.collection_select(:town, :town_id, Town.all, :id, :name) %>
-  <% end %>
-
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div>
-    <%= form.label :zip_code, style: "display: block" %>
-    <%= form.text_field :zip_code %>
-  </div>
-
-  <div>
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div>
-    <%= form.label :contact, style: "display: block" %>
-    <%= form.text_field :contact %>
-  </div>
-
-  <div>
-    <%= form.label :verified, style: "display: block" %>
-    <%= form.checkbox :verified %>
-  </div>
-
-  <div>
-    <%= form.label :comments, style: "display: block" %>
-    <%= form.fields_for :comments do |comment_form| %>
-      <%= comment_form.label :body %>
-      <%= comment_form.text_area :body %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

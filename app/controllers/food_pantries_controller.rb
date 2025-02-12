@@ -15,7 +15,7 @@ class FoodPantriesController < ApplicationController
   # GET /food_pantries/new
   def new
     @food_pantry = FoodPantry.new(town_id: params[:town_id])
-    #binding.pry
+    # binding.pry
     # @towns = Town.all
     # @food_pantry.comments.build
   end
