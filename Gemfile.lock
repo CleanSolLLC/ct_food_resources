@@ -292,7 +292,7 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
-    smarter_csv (1.13.1)
+    smarter_csv (1.14.3)
     solid_cable (3.0.7)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -379,7 +379,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rspec-rails (~> 7.0.0)
   rubocop-rails-omakase
-  smarter_csv (~> 1.13)
+  smarter_csv (~> 1.14)
   solid_cable
   solid_cache
   solid_queue
